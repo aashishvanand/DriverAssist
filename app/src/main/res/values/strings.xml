@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">DriverAssist</string>
+    <string name="start_driving">Start Driving</string>
+    <string name="stop_driving">Stop Driving</string>
+    <string name="status_rpm_high_alert">Warning! Exceeding RPM of Eco Limit</string>
+    <string name="status_rpm_low_alert">Warning! Below RPM of Eco Limit</string>
+    <string name="status_eco_mode">Eco Mode</string>
+    <string name="steering_angle">Steering Angle</string>
+    <string name="rpm">rpm</string>
+    <string name="info">Trip Details</string>
+    <string name="speed">Speed</string>
+    <string name="trip_id">Enter Trip ID</string>
+    <string name="scoreboard">Scoreboard</string>
+    <string name="submit">Getting Trip Details</string>
+</resources>
+
