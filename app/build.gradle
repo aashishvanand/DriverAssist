@@ -18,7 +18,8 @@ android {
         }
 
         buildTypes.each {
-            it.buildConfigField 'String', 'URL_login', '"https://aws.aashishvanand.me/cuic/index.php"'
+            it.buildConfigField 'String', 'URL_trip', '"https://aws.aashishvanand.me/cuic/index.php"'
+            it.buildConfigField 'String', 'URL_rank', '"https://aws.aashishvanand.me/cuic/rank.php"'
         }
     }
 }
@@ -35,5 +36,6 @@ dependencies {
     compile 'com.android.support:design:25.2.0'
     compile 'com.google.zxing:core:3.2.1'
     compile 'com.mcxiaoke.volley:library-aar:1.0.1'
+    compile 'com.android.support:recyclerview-v7:25.2.0'
     testCompile 'junit:junit:4.12'
 }

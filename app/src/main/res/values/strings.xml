@@ -12,5 +12,9 @@
     <string name="trip_id">Enter Trip ID</string>
     <string name="scoreboard">Scoreboard</string>
     <string name="submit">Getting Trip Details</string>
+    <string name="no_id">Check your ID</string>
+    <string name="check_connection">Check Connection</string>
+    <string name="name">Name</string>
+    <string name="score">score out of 5</string>
 </resources>
 
