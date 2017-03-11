@@ -1,29 +1,21 @@
 package com.aashish.driverassist;
 
-import android.app.ListActivity;
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.app.AlertDialog;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -54,9 +46,7 @@ public class MainActivity extends AppCompatActivity{
     String drivebutton,tripidtxt;
     Snackbar snackbar;
     ConstraintLayout constraintLayout;
-    CoordinatorLayout Main;
     private ProgressDialog pDialog;
-    ListView list;
     String barcodetxt;
     String startpoint;
     String endpoint;
@@ -67,6 +57,7 @@ public class MainActivity extends AppCompatActivity{
     String phone;
     String aadhar;
     String score;
+    Integer speed;
     public final static int QRcodeWidth = 500;
 
     private List<Driver> driverList = new ArrayList<>();
@@ -116,6 +107,14 @@ public class MainActivity extends AppCompatActivity{
                         } else if (drivebutton.equals(getResources().getString(R.string.stop_driving))) {
                             drive.setText(getResources().getString(R.string.start_driving));
                             thread.interrupt();
+
+
+                            new AlertDialog.Builder(MainActivity.this)
+                                    .setIcon(R.drawable.ic_navi)
+                                    .setTitle(getResources().getString(R.string.driving_summary))
+                                    .setMessage("Completed! Your Score for this session is " + score)
+                                    .setNegativeButton(getResources().getString(R.string.yes), null)
+                                    .show();
                         }
                     } else {
                         snackbar = Snackbar
@@ -156,9 +155,9 @@ public class MainActivity extends AppCompatActivity{
 
             @Override
             public void run() {
+                speed();
                 rpm();
                 steer();
-                speed();
             }
         };
 
@@ -206,12 +205,23 @@ public class MainActivity extends AppCompatActivity{
 
     private void steer(){
         Random r = new Random();
-        steerReading.setText(String.valueOf(r.nextInt(25-0) + 0));
+        int steer = r.nextInt(25-0) + 0;
+        if((steer > 20) && (steer <= 25) &&  (speed > 50))
+        {
+            status.setBackgroundColor(Color.RED);
+            status.setText(getResources().getText(R.string.status_steer_warning));
+        }
+        else
+        {
+            status.setBackgroundColor(Color.GREEN);
+            steerReading.setText(String.valueOf(steer));
+        }
     }
 
     private void speed() {
         Random r = new Random();
-        speedReading.setText(String.valueOf(r.nextInt(100-0) + 0));
+        speed = r.nextInt(100-0) + 0;
+        speedReading.setText(String.valueOf(speed));
     }
 
     Bitmap TextToImageEncode(String Value) throws WriterException {

@@ -16,5 +16,9 @@
     <string name="check_connection">Check Connection</string>
     <string name="name">Name</string>
     <string name="score">score out of 5</string>
+    <string name="okay">Ok</string>
+    <string name="driving_summary">Driving Summary</string>
+    <string name="yes">Ok</string>
+    <string name="status_steer_warning">Warning! High speeds during turn</string>
 </resources>
 
